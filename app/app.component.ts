@@ -6,19 +6,27 @@ import { Zoo } from './zoo.model';
   template: `
   <h1>Seattle Zoo -- Animal Tracker</h1>
 
-   <animal-list (EditAnimalSender) = "AnimalToEdit($event)" [childAnimalList]="masterZoo"></animal-list>
+  <div class = "container">
+   <div class= "row">
+     <div class = "col-md-6">
+       <animal-list (EditAnimalSender) = "AnimalToEdit($event)" [childAnimalList]="masterZoo" [childEdit] = "editButton"></animal-list>
 
-   <div *ngIf="openForm ==false">
-      <button (click)="updateOpenForm()">Add New Animal</button>
-   </div>
+       <div *ngIf="openForm ==false">
+          <button (click)="updateOpenForm()" class = "btn btn-info">Add New Animal</button>
+          <button (click)="editAnimalButton()" class = "btn btn-info">Edit Animals</button>
+       </div>
+     </div>
+     <div class = "col-md-6">
+       <div *ngIf="openFormButton == true">
+          <animal-form (newSender) = "addAnimal($event)"></animal-form>
+       </div>
 
-   <div *ngIf="openForm == true">
-      <animal-form (newSender) = "addAnimal($event)"></animal-form>
+       <div *ngIf="selectedAnimal != null">
+          <animal-edit [ChildAnimal] = "selectedAnimal" (doneButtonClickedSender)="finishedEditing($event)"></animal-edit>
+       </div>
+     </div>
    </div>
-
-   <div *ngIf="selectedAnimal != null">
-      <animal-edit [ChildAnimal] = "selectedAnimal" (doneButtonClickedSender)="finishedEditing($event)"></animal-edit>
-   </div>
+  </div>
 
 
 
@@ -35,13 +43,22 @@ export class AppComponent {
 
   selectedAnimal = null;
   openForm: boolean = false;
+  editButton: boolean = false;
+  openFormButton: boolean = false;
 
   addAnimal(newAnimal: Zoo){
     this.masterZoo.push(newAnimal);
     this.openForm = false;
+    this.openFormButton = false;
   }
 
   updateOpenForm(){
+    this.openForm = true;
+    this.openFormButton = true;
+  }
+
+  editAnimalButton(){
+    this.editButton = true;
     this.openForm = true;
   }
 
@@ -59,5 +76,7 @@ export class AppComponent {
     this.selectedAnimal.likes = result[6];
     this.selectedAnimal.dislikes = result[7];
     this.selectedAnimal = null;
+    this.editButton = false;
+    this.openForm = false;
 }
 }

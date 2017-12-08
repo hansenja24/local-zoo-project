@@ -22,7 +22,9 @@ import { Zoo } from './zoo.model';
       Sex: {{currentAnimal.sex}} <br>
       Likes: {{currentAnimal.likes}} <br>
       Dislikes: {{currentAnimal.dislikes}} <br>
-      <button (click)="EditAnimalList(currentAnimal)">Edit</button> <br> <br>
+      <span *ngIf="childEdit == true">
+      <button (click)="EditAnimalList(currentAnimal)" class = "btn btn-info">Edit</button>
+      </span> <br> <br>
     </li>
   </ul>
   `
@@ -30,6 +32,7 @@ import { Zoo } from './zoo.model';
 
 export class AnimalListComponent {
   @Input() childAnimalList: Zoo[];
+  @Input() childEdit: boolean;
   @Output() EditAnimalSender = new EventEmitter();
   filteredByAge: string = "allAge";
 
