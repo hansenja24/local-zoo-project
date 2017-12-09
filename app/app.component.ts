@@ -4,6 +4,7 @@ import { Zoo } from './zoo.model';
 @Component({
   selector: 'app-root',
   template: `
+
   <h1>Seattle Zoo -- Animal Tracker</h1>
 
   <div class = "container">
@@ -14,6 +15,7 @@ import { Zoo } from './zoo.model';
        <div *ngIf="openForm ==false">
           <button (click)="updateOpenForm()" class = "btn btn-info">Add New Animal</button>
           <button (click)="editAnimalButton()" class = "btn btn-info">Edit Animals</button>
+          <br><br>
        </div>
      </div>
      <div class = "col-md-6">
@@ -73,8 +75,9 @@ export class AppComponent {
     this.selectedAnimal.diet = result[3];
     this.selectedAnimal.location = result[4];
     this.selectedAnimal.caretaker = result[5];
-    this.selectedAnimal.likes = result[6];
-    this.selectedAnimal.dislikes = result[7];
+    this.selectedAnimal.sex = result[6];
+    this.selectedAnimal.likes = result[7];
+    this.selectedAnimal.dislikes = result[8];
     this.selectedAnimal = null;
     this.editButton = false;
     this.openForm = false;

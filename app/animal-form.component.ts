@@ -18,12 +18,8 @@ import { Zoo } from './zoo.model';
       <input class = "form-control" type="text" #age><br>
     </div>
     <div style="white-space:nowrap">
-    <label class = "control-label">Diet:</label>
-      <select class = "form-control" #diet>
-        <option [value]="Carnivore"> Carnivore </option>
-        <option [value]="Herbivore"> Herbivore </option>
-        <option [value]="Omnivore"> Omnivore </option>
-      </select> <br>
+      <label class = "control-label">Diet:</label>
+      <input class = "form-control" type="text" #diet><br>
     </div>
     <div style="white-space:nowrap">
       <label class = "control-label">Location:</label>
@@ -34,11 +30,8 @@ import { Zoo } from './zoo.model';
       <input class = "form-control" type="text" #caretaker><br>
     </div>
     <div style="white-space:nowrap">
-    <label class = "control-label">Sex:</label>
-      <select class = "form-control" #sex>
-        <option [value]="Male"> Male </option>
-        <option [value]="Female"> Female </option>
-      </select> <br>
+      <label class = "control-label">Sex:</label>
+      <input class = "form-control" type="text" #sex><br>
     </div>
     <div style="white-space:nowrap">
       <label class = "control-label">Likes:</label>
@@ -49,6 +42,7 @@ import { Zoo } from './zoo.model';
       <input class = "form-control" type="text" #dislikes><br>
     </div>
     <button class = "btn btn-info" (click) = "NewAnimal(species.value, name.value, age.value, diet.value, location.value, caretaker.value, sex.value, likes.value, dislikes.value); species.value='';name.value='';age.value='';diet.value='';location.value='';caretaker.value='';sex.value='';likes.value='';dislikes.value='';">Add</button>
+    <br><br>
   </form>
   `
 })

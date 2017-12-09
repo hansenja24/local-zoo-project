@@ -19,11 +19,7 @@ import { Zoo } from './zoo.model';
     </div>
     <div style="white-space:nowrap">
       <label class = "control-label">Edit Diet:</label>
-      <select class = "form-control" #diet>
-        <option [value]="Carnivore"> Carnivore </option>
-        <option [value]="Herbivore"> Herbivore </option>
-        <option [value]="Omnivore"> Omnivore </option>
-      </select> <br>
+      <input class = "form-control" type="text" value ="{{ChildAnimal.diet}}" #diet><br>
     </div>
     <div style="white-space:nowrap">
       <label class = "control-label">Edit Location:</label>
@@ -35,10 +31,7 @@ import { Zoo } from './zoo.model';
     </div>
     <div style="white-space:nowrap">
       <label class = "control-label">Edit Sex:</label>
-      <select class = "form-control" #sex>
-        <option [value]="Male"> Male </option>
-        <option [value]="Female"> Female </option>
-      </select> <br>
+      <input class = "form-control" type="text" value="{{ChildAnimal.sex}}" #sex><br>
     </div>
     <div style="white-space:nowrap">
       <label class = "control-label">Edit Likes:</label>
@@ -49,6 +42,7 @@ import { Zoo } from './zoo.model';
       <input class = "form-control" type="text" value="{{ChildAnimal.dislikes}}" #dislikes><br>
     </div>
     <button class = "btn btn-info" (click) = "EditAnimal(species.value, name.value, age.value, diet.value, location.value, caretaker.value, sex.value, likes.value, dislikes.value)">Edit</button>
+    <br><br>
   </form>
   `
 })

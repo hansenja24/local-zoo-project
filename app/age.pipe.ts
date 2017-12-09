@@ -20,7 +20,7 @@ export class AgePipe implements PipeTransform {
       return output;
     } else if (desiredAge == "young") {
       for (var i = 0; i < input.length; i++) {
-        if (input[i].age < 2) {
+        if (input[i].age < 2 && input[i].age >= 0) {
           output.push(input[i]);
         }
       }
